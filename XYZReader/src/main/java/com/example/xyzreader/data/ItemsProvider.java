@@ -1,5 +1,5 @@
 
-package com.ayman.xyzreader.data;
+package com.example.xyzreader.data;
 
 import android.content.ContentProvider;
 import android.content.ContentProviderOperation;

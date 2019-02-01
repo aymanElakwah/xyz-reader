@@ -20,7 +20,7 @@
  * -Changed package name
  */
 
-package com.ayman.xyzreader.data;
+package com.example.xyzreader.data;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package com.ayman.xyzreader.data;
+package com.example.xyzreader.data;
 
 import android.net.Uri;
 
