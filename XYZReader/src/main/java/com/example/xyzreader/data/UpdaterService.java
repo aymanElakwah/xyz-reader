@@ -1,4 +1,4 @@
-package com.example.xyzreader.data;
+package com.ayman.xyzreader.data;
 
 import android.app.IntentService;
 import android.content.ContentProviderOperation;
@@ -12,7 +12,7 @@ import android.os.RemoteException;
 import android.text.format.Time;
 import android.util.Log;
 
-import com.example.xyzreader.remote.RemoteEndpointUtil;
+import com.ayman.xyzreader.remote.RemoteEndpointUtil;
 
 import org.json.JSONArray;
 import org.json.JSONException;
