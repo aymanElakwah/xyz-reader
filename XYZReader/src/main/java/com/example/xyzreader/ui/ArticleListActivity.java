@@ -18,6 +18,8 @@ import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.TextView;
 
 import com.example.xyzreader.R;
@@ -92,8 +94,14 @@ public class ArticleListActivity extends AppCompatActivity implements
         @Override
         public void onReceive(Context context, Intent intent) {
             if (UpdaterService.BROADCAST_ACTION_STATE_CHANGE.equals(intent.getAction())) {
+                boolean oldState = mIsRefreshing;
                 mIsRefreshing = intent.getBooleanExtra(UpdaterService.EXTRA_REFRESHING, false);
                 updateRefreshingUI();
+                if(oldState && !mIsRefreshing) {
+                    LayoutAnimationController controller = AnimationUtils.loadLayoutAnimation(context, R.anim.layout_animation_rise_up);
+                    mRecyclerView.setLayoutAnimation(controller);
+                    mRecyclerView.scheduleLayoutAnimation();
+                }
             }
         }
     };

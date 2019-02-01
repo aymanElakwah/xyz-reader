@@ -9,5 +9,6 @@
     <dimen name="fab_margin">24dp</dimen>
     <dimen name="list_item_image_margin">4dp</dimen>
     <dimen name="list_card_margins">4dp</dimen>
+    <dimen name="initial_toolbar_height">112dp</dimen>
 
 </resources>
