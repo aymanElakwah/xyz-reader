@@ -1,0 +1,41 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/full_bleed_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/photo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        tools:srcCompat="@tools:sample/backgrounds/scenic[17]" />
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/share_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_marginEnd="@dimen/fab_margin"
+        android:layout_marginBottom="@dimen/fab_margin"
+        android:background="@drawable/add_fab_background"
+        android:clickable="true"
+        android:contentDescription="@string/action_share"
+        android:focusable="true"
+        android:src="?attr/actionModeShareDrawable"
+        app:elevation="6dp"
+        app:fabSize="normal"
+        app:pressedTranslationZ="6dp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/text_block"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:background="@null"
+        android:clipToPadding="false"
+        android:paddingTop="200dp"
+        android:paddingBottom="@dimen/article_bottom_padding" />
+</FrameLayout>

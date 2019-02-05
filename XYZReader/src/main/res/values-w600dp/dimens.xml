@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="line_of_text_width">500dp</dimen>
+    <dimen name="line_of_text_elevation">8dp</dimen>
+    <dimen name="article_title_width">504dp</dimen>
+    <dimen name="line_of_text_side_padding">8dp</dimen>
+</resources>

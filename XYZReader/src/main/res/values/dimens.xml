@@ -1,7 +1,11 @@
 <resources>
+    <dimen name="custom_match_parent">-1px</dimen>
+    <dimen name="line_of_text_width">@dimen/custom_match_parent</dimen>
+    <dimen name="line_of_text_elevation">0dp</dimen>
+    <dimen name="article_title_width">@dimen/custom_match_parent</dimen>
     <!-- detail -->
     <dimen name="detail_title_text_size">32sp</dimen>
-    <dimen name="detail_body_text_size">22sp</dimen>
+    <dimen name="detail_body_text_size">18sp</dimen>
     <item name="detail_body_line_spacing_multiplier" format="float" type="fraction">1.25</item>
 
     <dimen name="fab_elevation">2dp</dimen>
@@ -10,5 +14,9 @@
     <dimen name="list_item_image_margin">4dp</dimen>
     <dimen name="list_card_margins">4dp</dimen>
     <dimen name="initial_toolbar_height">112dp</dimen>
+    <dimen name="title_size">112dp</dimen>
+    <dimen name="up_button_width">56dp</dimen>
+    <dimen name="article_bottom_padding">112dp</dimen>
+    <dimen name="line_of_text_side_padding">4dp</dimen>
 
 </resources>
