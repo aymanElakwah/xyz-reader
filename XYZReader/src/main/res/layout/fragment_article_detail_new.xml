@@ -62,14 +62,13 @@
         android:layout_gravity="end|bottom"
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginBottom="@dimen/fab_margin"
-        android:background="@drawable/add_fab_background"
         android:clickable="true"
         android:contentDescription="@string/action_share"
         android:focusable="true"
         android:src="?attr/actionModeShareDrawable"
         app:elevation="6dp"
         app:fabSize="normal"
-        app:pressedTranslationZ="6dp" />
+        app:pressedTranslationZ="12dp" />
 
     <!--<android.support.v4.widget.NestedScrollView-->
     <!--android:layout_width="match_parent"-->
