@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
@@ -28,6 +29,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.DecelerateInterpolator;
@@ -62,6 +64,15 @@ public class ArticleDetailFragment extends Fragment implements
     private int mMutedColor = 0xFF333333;
     private ImageView mPhotoView;
     private boolean fullBleed;
+    private boolean visible;
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+        if(visible) {
+            Log.d("AYMAN", "It is now visible");
+            animate();
+        }
+    }
 
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.sss");
     // Use default locale format
@@ -76,6 +87,7 @@ public class ArticleDetailFragment extends Fragment implements
     private AppBarLayout mAppBarLayout;
     private FloatingActionButton mFab;
     private TextAdapter mTextAdapter;
+    private int animate;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -139,12 +151,21 @@ public class ArticleDetailFragment extends Fragment implements
             }
         });
         bindViews();
+        mRootView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+
+            @Override
+            public boolean onPreDraw() {
+                mRootView.getViewTreeObserver().removeOnPreDrawListener(this);
+                Log.d("AYMAN", "Layout is ready!");
+                animate();
+                return true;
+            }
+        });
         return mRootView;
     }
 
     private void updateStatusBar() {
         if (changeStatusColor && hasColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            animate();
             Window window = getActivityCast().getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(mMutedColor);
@@ -210,6 +231,9 @@ public class ArticleDetailFragment extends Fragment implements
                         public void onResponse(ImageLoader.ImageContainer imageContainer, boolean b) {
                             Bitmap bitmap = imageContainer.getBitmap();
                             if (bitmap != null) {
+                                mPhotoView.setImageBitmap(bitmap);
+                                Log.d("AYMAN", "Image loaded successfully");
+                                animate();
                                 createPaletteAsync(bitmap, imageContainer);
                             }
                         }
@@ -271,7 +295,6 @@ public class ArticleDetailFragment extends Fragment implements
             public void onGenerated(Palette p) {
                 hasColor = true;
                 mMutedColor = p.getDarkMutedColor(0xFF333333);
-                mPhotoView.setImageBitmap(imageContainer.getBitmap());
                 if (fullBleed) {
                     mTextAdapter.setColor(mMutedColor);
                 } else {
@@ -289,7 +312,7 @@ public class ArticleDetailFragment extends Fragment implements
     }
 
     public void setImageViewPadding() {
-        if(fullBleed)
+        if (fullBleed)
             return;
         ViewGroup.MarginLayoutParams marginParams = new ViewGroup.MarginLayoutParams(mPhotoView.getLayoutParams());
         int height = mToolbar.getMeasuredHeight();
@@ -300,13 +323,15 @@ public class ArticleDetailFragment extends Fragment implements
     }
 
     public void animate() {
-        if(fullBleed)
+        animate++;
+        Log.d("AYMAN", "animate = " + animate);
+        if (animate != 3) {
+            return;
+        }
+        if (fullBleed)
             return;
         CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) mAppBarLayout.getLayoutParams();
         final AppBarLayout.Behavior behavior = (AppBarLayout.Behavior) params.getBehavior();
-//        if(behavior != null) {
-//            behavior.onNestedFling(mCoordinatorLayout, mAppBarLayout, null, 0, 1000, false);
-//        }
         if (behavior != null) {
             ValueAnimator valueAnimator = ValueAnimator.ofInt();
             valueAnimator.setInterpolator(new DecelerateInterpolator());
@@ -320,6 +345,7 @@ public class ArticleDetailFragment extends Fragment implements
             valueAnimator.setIntValues(behavior.getTopAndBottomOffset(), -(int) (mPhotoView.getHeight() * 0.5f));
             valueAnimator.setDuration(300);
             valueAnimator.start();
+            animate = 2;
         }
     }
 

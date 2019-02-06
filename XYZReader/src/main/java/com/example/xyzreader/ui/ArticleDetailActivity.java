@@ -141,9 +141,11 @@ public class ArticleDetailActivity extends AppCompatActivity
             if(fragment != object) {
                 if(fragment != null) {
                     fragment.setChangeStatusColor(false);
+                    fragment.setVisible(false);
                 }
                 fragment = (ArticleDetailFragment) object;
                 fragment.setChangeStatusColor(true);
+                fragment.setVisible(true);
             }
             super.setPrimaryItem(container, position, object);
         }
