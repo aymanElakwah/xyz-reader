@@ -6,8 +6,6 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
@@ -68,7 +66,7 @@ public class ArticleDetailFragment extends Fragment implements
 
     public void setVisible(boolean visible) {
         this.visible = visible;
-        if(visible) {
+        if (visible) {
             Log.d("AYMAN", "It is now visible");
             animate();
         }
@@ -192,8 +190,10 @@ public class ArticleDetailFragment extends Fragment implements
         if (!fullBleed) {
             mAppBarLayout = mRootView.findViewById(R.id.appbar);
             mToolbar = mRootView.findViewById(R.id.toolbar);
-//            mToolbar.setTitle("");
-//            ((AppCompatActivity) getActivity()).setSupportActionBar(mToolbar);
+            AppCompatActivity appCompatActivity = (AppCompatActivity) getActivity();
+            if (appCompatActivity != null) {
+                appCompatActivity.setSupportActionBar(mToolbar);
+            }
         }
         mRecyclerView = mRootView.findViewById(R.id.text_block);
 
@@ -234,7 +234,7 @@ public class ArticleDetailFragment extends Fragment implements
                                 mPhotoView.setImageBitmap(bitmap);
                                 Log.d("AYMAN", "Image loaded successfully");
                                 animate();
-                                createPaletteAsync(bitmap, imageContainer);
+                                createPaletteAsync(bitmap);
                             }
                         }
 
@@ -290,7 +290,7 @@ public class ArticleDetailFragment extends Fragment implements
         bindViews();
     }
 
-    public void createPaletteAsync(Bitmap bitmap, final ImageLoader.ImageContainer imageContainer) {
+    public void createPaletteAsync(Bitmap bitmap) {
         Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
             public void onGenerated(Palette p) {
                 hasColor = true;

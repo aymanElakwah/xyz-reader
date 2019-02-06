@@ -27,6 +27,12 @@
                 app:layout_collapseParallaxMultiplier="0.3"
                 tools:srcCompat="@tools:sample/backgrounds/scenic[5]" />
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="112dp"
+                android:background="@drawable/photo_background_protection"
+                app:layout_collapseMode="pin"/>
+
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
@@ -66,49 +72,8 @@
         android:contentDescription="@string/action_share"
         android:focusable="true"
         android:src="?attr/actionModeShareDrawable"
-        app:elevation="6dp"
+        app:elevation="@dimen/fab_elevation"
         app:fabSize="normal"
-        app:pressedTranslationZ="12dp" />
+        app:pressedTranslationZ="@dimen/fab_press_translation_z" />
 
-    <!--<android.support.v4.widget.NestedScrollView-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">-->
-
-    <!--<WebView-->
-    <!--android:id="@+id/webView"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent" />-->
-    <!--</android.support.v4.widget.NestedScrollView>-->
-
-
-    <!--<android.support.v4.widget.NestedScrollView-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">-->
-
-    <!--&lt;!&ndash;<com.example.xyzreader.ui.MaxWidthLinearLayout&ndash;&gt;-->
-    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
-    <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
-    <!--&lt;!&ndash;android:background="#fff"&ndash;&gt;-->
-    <!--&lt;!&ndash;android:elevation="2dp"&ndash;&gt;-->
-    <!--&lt;!&ndash;android:maxWidth="@dimen/detail_card_max_width"&ndash;&gt;-->
-    <!--&lt;!&ndash;android:orientation="vertical">&ndash;&gt;-->
-
-    <!--&lt;!&ndash;</com.example.xyzreader.ui.MaxWidthLinearLayout>&ndash;&gt;-->
-
-    <!--</android.support.v4.widget.NestedScrollView>-->
-
-    <!--<ImageButton-->
-    <!--android:id="@+id/share_fab"-->
-    <!--android:layout_width="56dp"-->
-    <!--android:layout_height="56dp"-->
-    <!--android:layout_gravity="bottom|end"-->
-    <!--android:layout_marginRight="@dimen/fab_margin"-->
-    <!--android:layout_marginBottom="@dimen/fab_margin"-->
-    <!--android:background="@drawable/add_fab_background"-->
-    <!--android:contentDescription="@string/action_share"-->
-    <!--android:elevation="@dimen/fab_elevation"-->
-    <!--android:src="@drawable/ic_share"-->
-    <!--android:stateListAnimator="@animator/fab_state_list_anim" />-->
 </android.support.design.widget.CoordinatorLayout>

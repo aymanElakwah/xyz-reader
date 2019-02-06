@@ -12,6 +12,11 @@
         android:scaleType="centerCrop"
         tools:srcCompat="@tools:sample/backgrounds/scenic[17]" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="112dp"
+        android:background="@drawable/photo_background_protection" />
+
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/share_fab"
@@ -24,9 +29,9 @@
         android:contentDescription="@string/action_share"
         android:focusable="true"
         android:src="?attr/actionModeShareDrawable"
-        app:elevation="6dp"
+        app:elevation="@dimen/fab_elevation"
         app:fabSize="normal"
-        app:pressedTranslationZ="12dp" />
+        app:pressedTranslationZ="@dimen/fab_press_translation_z" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/text_block"

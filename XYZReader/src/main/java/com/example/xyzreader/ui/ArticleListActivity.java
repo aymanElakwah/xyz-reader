@@ -4,11 +4,12 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.Loader;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -62,6 +63,9 @@ public class ArticleListActivity extends AppCompatActivity implements
 
         mToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
+        ActionBar supportActionBar = getSupportActionBar();
+        if(supportActionBar != null)
+            supportActionBar.setTitle("");
 
         mSwipeRefreshLayout = findViewById(R.id.swipe_refresh_layout);
         mSwipeRefreshLayout.setOnRefreshListener(this);
@@ -166,12 +170,6 @@ public class ArticleListActivity extends AppCompatActivity implements
 
         public Adapter(Cursor cursor) {
             mCursor = cursor;
-        }
-
-        public void clear() {
-            mCursor.close();
-            mCursor = null;
-            notifyDataSetChanged();
         }
 
         @Override
